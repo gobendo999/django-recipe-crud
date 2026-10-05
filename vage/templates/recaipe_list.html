@@ -1,0 +1,155 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Recipe List</title>
+
+    <link rel="stylesheet" href="{% static 'css/recipe.css' %}">
+</head>
+
+<body>
+
+    <!-- Add Recipe Form -->
+
+    <div class="container">
+
+        <form
+            class="form-card"
+            method="POST"
+            enctype="multipart/form-data"
+        >
+
+            {% csrf_token %}
+
+            <h2 style="color: #040201;">Add Recipe</h2>
+
+            <hr>
+
+            <div class="form-group">
+
+                <label for="recipeName">
+                    Recipe Name
+                </label>
+
+                <input
+                    type="text"
+                    id="recipeName"
+                    name="recipe_name"
+                    placeholder="Enter recipe name"
+                    required
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="recipeDescription">
+                    Recipe Description
+                </label>
+
+                <textarea
+                    id="recipeDescription"
+                    name="recipe_description"
+                    placeholder="Enter recipe description"
+                    required
+                ></textarea>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="recipeImage">
+                    Recipe Image
+                </label>
+
+                <input
+                    type="file"
+                    id="recipeImage"
+                    name="recipe_image"
+                    accept="image/*"
+                    required
+                >
+
+            </div>
+
+            <button type="submit">
+                Add Recipe
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- Recipe Table -->
+    <div class="recipe-container">
+
+        <h2>All Recipes</h2>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Image</th>
+                    <th>Recipe Name</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for recipe in recipes %}
+
+                <tr>
+
+                    <td>{{ recipe.id }}</td>
+
+                    <td>
+                        {% if recipe.image %}
+                            <img src="{{ recipe.image.url }}" alt="{{ recipe.name }}">
+                        {% endif %}
+                    </td>
+
+                    <td>{{ recipe.name }}</td>
+
+                    <td>{{ recipe.description }}</td>
+
+                    <td>
+                        <a href="{% url 'update_recipe' recipe.id %}" class="btn-update">
+                            Update
+                        </a>
+
+                        <form method="POST"
+                              action="{% url 'delete_recipe' recipe.id %}"
+                              style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+                    <td colspan="5">No recipes found.</td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</body>
+
+</html>

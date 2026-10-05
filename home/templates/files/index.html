@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>  Gobendo Debnath</title>
+</head>
+<body>
+    <h1>Welcome to My Django Project</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="text-align: center;">Name</th>
+                <th style="text-align: center;">Age</th>
+                <th style="text-align: center;">can vote</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for person in info %}
+            <tr>
+                <td style="text-align: center;">{{ person.Name }}</td>
+                <td style="text-align: center;">{{ person.age }}</td>
+
+                <td {% if person.age >= 22 %} style = "background-color: #d4edda; color: #155724;" {% endif %} style="text-align: center;">
+                    {% if person.age >= 22 %}
+                        yes 👍🏻
+                    {% else %}
+                        no 👎
+                    {% endif %}
+                </td>   
+                </td>   
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+</body>
+</html>

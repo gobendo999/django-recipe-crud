@@ -1,0 +1,94 @@
+form {
+    max-width: 520px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+form input[type="text"],
+form textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font: inherit;
+    color: #1f2937;
+    background: #f9fafb;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+form textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+form input[type="text"]:focus,
+form textarea:focus {
+    outline: none;
+    border-color: #f97316;
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
+    background: #ffffff;
+}
+
+form input[type="file"] {
+    width: 100%;
+    padding: 0.75rem;
+    font: inherit;
+    font-size: 0.9rem;
+    color: #4b5563;
+    background: #f9fafb;
+    border: 2px dashed #d1d5db;
+    border-radius: 8px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+form input[type="file"]:hover {
+    border-color: #f97316;
+}
+
+form input[type="file"]::file-selector-button {
+    margin-right: 1rem;
+    padding: 0.5rem 1rem;
+    font: inherit;
+    font-weight: 600;
+    color: #ffffff;
+    background: #374151;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+form input[type="file"]::file-selector-button:hover {
+    background: #1f2937;
+}
+
+form button[type="submit"] {
+    padding: 0.85rem 1.5rem;
+    font: inherit;
+    font-weight: 600;
+    color: #ffffff;
+    background: #f97316;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+form button[type="submit"]:hover {
+    background: #ea580c;
+}
+
+form button[type="submit"]:active {
+    transform: scale(0.98);
+}
