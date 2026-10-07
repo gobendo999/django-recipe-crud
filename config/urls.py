@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -15,7 +15,8 @@ urlpatterns = [
 
     path('recaipe/', recaipe_list, name='recaipe_list'),
 
-    path(
+
+     path(
         'delete-recipe/<int:id>/',
         delete_recipe,
         name='delete_recipe'
@@ -26,7 +27,8 @@ urlpatterns = [
         update_recipe,
         name='update_recipe'
     ),
-
+    path('', include('accounts.urls')),
+    
 ]
 
 

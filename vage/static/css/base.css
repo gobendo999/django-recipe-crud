@@ -1,0 +1,66 @@
+/* static/css/navbar.css */
+
+.navbar {
+    max-width: 1000px;
+    margin: 0 auto 32px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    background: #2e6a3b;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(29, 42, 27, 0.12);
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+}
+
+.navbar .brand {
+    color: #fff;
+    font-family: "Iowan Old Style", Georgia, "Times New Roman", serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    color: #e8f1e4;
+    font-size: 0.95rem;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.nav-user {
+    color: #cfe0c9;
+    font-size: 0.9rem;
+}
+
+.nav-links a.nav-btn {
+    padding: 7px 14px;
+    border-radius: 6px;
+    background: #fff;
+    color: #234f2d;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.nav-links a.nav-btn:hover {
+    background: #e8f1e4;
+    text-decoration: none;
+}
+
+.navbar a:focus-visible {
+    outline: 3px solid rgba(255, 255, 255, 0.6);
+    outline-offset: 2px;
+}

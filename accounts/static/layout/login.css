@@ -1,0 +1,146 @@
+/* static/layout/login.css */
+
+:root {
+    --bg: #f2f5ee;
+    --surface: #ffffff;
+    --ink: #1d2a1b;
+    --muted: #5d6b59;
+    --line: #d6dfcc;
+    --basil: #2e6a3b;
+    --basil-dark: #234f2d;
+    --radius: 10px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 32px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+    line-height: 1.5;
+}
+
+h2 {
+    width: 100%;
+    max-width: 420px;
+    margin: 0;
+    padding: 28px 28px 0;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-bottom: 0;
+    border-radius: var(--radius) var(--radius) 0 0;
+    font-family: "Iowan Old Style", Georgia, "Times New Roman", serif;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+}
+
+form {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 20px 28px 12px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-top: 0;
+    border-bottom: 0;
+}
+
+label {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: #fbfcf9;
+    color: var(--ink);
+    font: inherit;
+}
+
+input:focus-visible,
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid rgba(46, 106, 59, 0.4);
+    outline-offset: 2px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    margin-top: 8px;
+    padding: 12px;
+    border: 0;
+    border-radius: 6px;
+    background: var(--basil);
+    color: #fff;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+input[type="submit"]:hover {
+    background: var(--basil-dark);
+}
+
+p {
+    width: 100%;
+    max-width: 420px;
+    margin: 0;
+    padding: 12px 28px 28px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-top: 0;
+    border-radius: 0 0 var(--radius) var(--radius);
+    box-shadow: 0 6px 20px rgba(29, 42, 27, 0.07);
+    color: var(--muted);
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+p a {
+    color: var(--basil);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+p a:hover {
+    color: var(--basil-dark);
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 20px 12px;
+    }
+
+    h2,
+    form,
+    p {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}

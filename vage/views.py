@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Recipe
+from django.contrib.auth.decorators import login_required
 
 
+@login_required
 def recaipe_list(request):
 
     if request.method == "POST":
@@ -11,6 +13,7 @@ def recaipe_list(request):
         image = request.FILES.get('recipe_image')
 
         Recipe.objects.create(
+            user=request.user,                                  # বদল ১
             name=name,
             description=description,
             image=image
@@ -18,15 +21,16 @@ def recaipe_list(request):
 
         return redirect('/recaipe/')
 
-    recipes = Recipe.objects.all()
+    recipes = Recipe.objects.filter(user=request.user)          # বদল ২
 
     return render(request, 'recaipe_list.html', {
         'recipes': recipes
     })
 
 
+@login_required
 def update_recipe(request, id):
-    recipe = get_object_or_404(Recipe, id=id)
+    recipe = get_object_or_404(Recipe, id=id, user=request.user)    # বদল ৩
 
     if request.method == "POST":
         name = request.POST.get('recipe_name')
@@ -47,10 +51,13 @@ def update_recipe(request, id):
     return render(request, 'update_recipe.html', {'recipe': recipe})
 
 
+@login_required
 def delete_recipe(request, id):
 
     if request.method == "POST":
-        recipe = get_object_or_404(Recipe, id=id)
+        recipe = get_object_or_404(Recipe, id=id, user=request.user)    # বদল ৪
         recipe.delete()
 
     return redirect('/recaipe/')
+
+ 

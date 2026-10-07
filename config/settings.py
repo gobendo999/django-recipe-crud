@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 EXTERNAL_APPS = [
     'home',
     'vage',
+    'accounts',
      
 
 ]
@@ -86,14 +87,17 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'recipe_db',
+        'USER': 'root',
+        'PASSWORD': 'Gobendo111@@@',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
-
 AUTH_PASSWORD_VALIDATORS = [
-    {
+    {   
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
@@ -124,6 +128,8 @@ STATIC_URL = 'static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+LOGIN_URL = '/login/'
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

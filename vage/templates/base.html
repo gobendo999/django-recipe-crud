@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Recipe App{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <a href="{% url 'recaipe_list' %}" class="brand">Recipe App</a>
+
+        <div class="nav-links">
+            {% if user.is_authenticated %}
+                <span class="nav-user">Hello, {{ user.username }}</span>
+                <a href="{% url 'recaipe_list' %}">My Recipes</a>
+                <a href="{% url 'logout' %}" class="nav-btn">Logout</a>
+            {% else %}
+                <a href="{% url 'login' %}">Login</a>
+                <a href="{% url 'register' %}" class="nav-btn">Register</a>
+            {% endif %}
+        </div>
+
+    </nav>
+
+    {% block content %}{% endblock %}
+
+</body>
+</html>

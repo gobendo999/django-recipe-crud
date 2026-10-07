@@ -1,18 +1,13 @@
+{% extends 'base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
+{% block title %}Recipe List{% endblock %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Recipe List</title>
-
+{% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/recipe.css' %}">
-</head>
+{% endblock %}
 
-<body>
+{% block content %}
 
     <!-- Add Recipe Form -->
 
@@ -95,7 +90,7 @@
 
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>No.</th>
                     <th>Image</th>
                     <th>Recipe Name</th>
                     <th>Description</th>
@@ -109,7 +104,7 @@
 
                 <tr>
 
-                    <td>{{ recipe.id }}</td>
+                    <td>{{ forloop.counter }}</td>
 
                     <td>
                         {% if recipe.image %}
@@ -150,6 +145,4 @@
 
     </div>
 
-</body>
-
-</html>
+{% endblock %}

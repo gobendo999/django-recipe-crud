@@ -36,13 +36,12 @@
                 <td style="text-align: center;">{{ person.Name }}</td>
                 <td style="text-align: center;">{{ person.age }}</td>
 
-                <td {% if person.age >= 22 %} style = "background-color: #d4edda; color: #155724;" {% endif %} style="text-align: center;">
+                <td style="text-align: center; {% if person.age >= 22 %}background-color: #d4edda; color: #155724;{% endif %}">
                     {% if person.age >= 22 %}
                         yes 👍🏻
                     {% else %}
                         no 👎
                     {% endif %}
-                </td>   
                 </td>   
             </tr>
             {% endfor %}
