@@ -86,6 +86,20 @@
 
         <h2>All Recipes</h2>
 
+        <!-- Search Bar -->
+        <form method="GET" class="search-bar">
+            <input
+                type="search"
+                name="q"
+                value="{{ query }}"
+                placeholder="Search by name or description"
+            >
+            <button type="submit">Search</button>
+            {% if query %}
+                <a href="{% url 'recaipe_list' %}" class="search-clear">Clear</a>
+            {% endif %}
+        </form>
+
         <table>
 
             <thead>
@@ -134,7 +148,13 @@
                 {% empty %}
 
                 <tr>
-                    <td colspan="5">No recipes found.</td>
+                    <td colspan="5">
+                        {% if query %}
+                            No recipes match "{{ query }}".
+                        {% else %}
+                            No recipes found.
+                        {% endif %}
+                    </td>
                 </tr>
 
                 {% endfor %}
